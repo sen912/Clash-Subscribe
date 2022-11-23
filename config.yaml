@@ -1,0 +1,31 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: :9090
+
+proxy-providers:
+	国内:
+		type: http
+		path: /reject.txt
+		url: https://api.faststream.top/5bC8546b77yB5L2g6Kej5oiR5a+G5bmy5Zib77yf/download/%E5%9B%BD%E5%86%85?arget=Clash
+		interval: 300
+		health-check:
+			enable: true
+			url: http://www.gstatic.com/generate_204
+			interval: 300
+	国外:
+		type: http
+		path: /reject.txt
+		url: https://api.faststream.top/5bC8546b77yB5L2g6Kej5oiR5a+G5bmy5Zib77yf/download/%E5%9B%BD%E5%A4%96?target=Clash
+		interval: 300
+		health-check:
+			enable: true
+			url: http://www.gstatic.com/generate_204
+			interval: 300
+
+rule:
+	- GEOIP,CN,国内
+	- GEOIP,!CN,国外
+	- MATCH,国外
