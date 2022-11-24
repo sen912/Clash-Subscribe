@@ -44,7 +44,7 @@ proxy-groups:
 rule-providers:
  AD:
   type: http
-  behavior: classical
+  behavior: domain
   path: ./reject.txt
   url: 'https://github.com/Loyalsoldier/clash-rules/releases/download/202211222241/reject.txt'
   interval: 300
