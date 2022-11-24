@@ -1,4 +1,4 @@
-function operator(proxies, targetPlatform) {
+async function operator(proxies = []) {
     const _ = lodash
     const regex = /tcp/gi
 
