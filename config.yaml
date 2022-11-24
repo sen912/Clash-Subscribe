@@ -31,6 +31,8 @@ proxy-groups:
    type: select
    use:
     - domestic
+   proxies:
+    - 🇨🇳 广东
  - name: 🚀 科学上网
    type: select
    use:
