@@ -3,7 +3,7 @@ async function operator(proxies = []) {
     const regex = /tcp/gi
 
     return proxies.map((proxy = {}) => {
-        if (proxy.name.match(regex) && (!"ws" in proxy)) {
+        if (proxy.name.match(regex) && !("ws" in proxy)) {
             _.set(proxy, 'network', 'http')
             _.set(proxy, 'http-opts.headers.method', 'GET')
             _.set(proxy, 'http-opts.path', ['/'])
