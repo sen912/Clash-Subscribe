@@ -23,11 +23,3 @@ function operator(proxies, targetPlatform) {
         return proxy;
     });
 }
-
-function filter(proxies, targetPlatform) {
-    return proxies.map(proxy => {
-        // Return true if the current proxy is selected
-
-        return true;
-    });
-}
