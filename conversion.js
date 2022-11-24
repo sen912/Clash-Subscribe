@@ -1,17 +1,24 @@
-async function operator(proxies = []) {
-    const _ = lodash
+function operator(proxies, targetPlatform) {
     const regex = /tcp/gi
 
-    return proxies.map((proxy = {}) => {
+    return proxies.map(proxy => {
         if (proxy.name.match(regex) && !("ws" in proxy)) {
-            _.set(proxy, 'network', 'http')
-            _.set(proxy, 'http-opts.headers.method', 'GET')
-            _.set(proxy, 'http-opts.path', ['/'])
-            _.set(proxy, 'http-opts.headers.Host', ['a.189.cn'])
+            proxy['network'] = 'http'
+            proxy['http-opts'] = {
+                'headers': {
+                    method: 'GET',
+                    Host: ['a.189cn']
+                },
+                'path': ['/']
+            }
         }
-        _.set(proxy, 'network', 'ws')
-        _.set(proxy, 'ws-opts.path', '/')
-        _.set(proxy, 'ws-opts.headers.Host', 'a.189.cn')
+        proxy['network'] = 'ws'
+        proxy['ws-opts'] = {
+            'headers': {
+                Host: ['a.189cn']
+            },
+            'path': ['/']
+        }
 
         return proxy;
     });
